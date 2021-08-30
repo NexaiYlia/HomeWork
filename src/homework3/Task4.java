@@ -12,8 +12,6 @@ public class Task4 {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Здравствуйте! Введите текст для форматирования:");
         String stringToChek = scanner.nextLine();
-        System.out.println("Введите слово,количество вхождений для которого необходимо посчитать:");
-        String stringToLookFor = scanner.nextLine();
         String[] words = stringToChek.split(" ");
         System.out.println("Строка разделена на слова по пробелу:");
         for (int i = 0; i < words.length; i++) {
@@ -21,18 +19,21 @@ public class Task4 {
         }
         System.out.println();
         Arrays.sort(words);
+        System.out.println("Массив строк отсортирован по алфавиту:");
         System.out.println(Arrays.toString(words));
-        int counter = 0;
-        for (int i = 0; i < words.length; i++) {
-            Pattern pattern = Pattern.compile(words[i]);
-            Matcher matcher = pattern.matcher(pattern);
-            int count = 0;
-            while(matcher.find())
-                count++;
-            System.out.println("Слово " + words[0] + " встречается в тексте " + counter + " раза");
-            counter = 0;
+        for (int i = 1; i < words.length; i++) {
 
-
+            if (words[i] != words[i - 1]) {
+                Pattern pattern = Pattern.compile(words[i]);
+                Matcher matcher = pattern.matcher(stringToChek);
+                int count = 0;
+                while (matcher.find()) {
+                    count++;
+                }
+                System.out.println("Слово " + words[i] + " встречается в тексте " + count + " раза");
+            } else {
+                return;
+            }
         }
     }
 }
