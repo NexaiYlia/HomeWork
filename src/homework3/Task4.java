@@ -22,7 +22,6 @@ public class Task4 {
         System.out.println("Массив строк отсортирован по алфавиту:");
         System.out.println(Arrays.toString(words));
         for (int i = 1; i < words.length; i++) {
-
             if (words[i] != words[i - 1]) {
                 Pattern pattern = Pattern.compile(words[i]);
                 Matcher matcher = pattern.matcher(stringToChek);
@@ -37,5 +36,6 @@ public class Task4 {
         }
     }
 }
+
 
 
